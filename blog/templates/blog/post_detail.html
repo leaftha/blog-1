@@ -2,16 +2,15 @@
 {% block content %}
 
 <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <header class="masthead" style="background-image: url('https://picsum.photos/1900/600')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h2>{{ object.title }}</h2>
+            <h1>{{ object.title }}</h1>
             <span class="meta">Posted by
-              <a href="#">{{ object.author }}</a>
-              on {{ object.created }}</span>
+              <a>{{ object.author }}</a> on {{ object.created }}</span>
           </div>
         </div>
       </div>
