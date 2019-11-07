@@ -20,6 +20,11 @@
             {% for p in object_list %}
             <article class="post-preview">
                 <a href="{{ p.get_absolute_url }}">
+                    {% if p.category %}
+                    <span class="badge badge-secondary post-subtitle float-right">{{ p.category }}</span>
+                    {% else %}
+                    <span class="badge badge-secondary post-subtitle float-right">미분류</span>
+                    {% endif %}
                     <h2 class="post-title">{{ p.title }}</h2>
                     <h3 class="post-subtitle">{{ p.content | truncatewords:10 }}</h3>
                 </a>

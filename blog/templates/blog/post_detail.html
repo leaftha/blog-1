@@ -22,6 +22,12 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
+        {% if p.category %}
+        <span class="badge badge-secondary post-subtitle float-right">{{ p.category }}</span>
+        {% else %}
+        <span class="badge badge-secondary post-subtitle float-right">미분류</span>
+        {% endif %}
+        <hr/>
         {% if object.head_image %}
         <img class="img-fluid rounded" src="{{ object.head_image.url }}" alt={{ object.title }}>
         {% endif %}
