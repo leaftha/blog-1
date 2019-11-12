@@ -46,6 +46,8 @@ class PostDetail(DetailView):
 
 class PostListByCategory(ListView):
 
+    paginate_by = 5
+
     def get_queryset(self):
         slug = self.kwargs['slug']
 

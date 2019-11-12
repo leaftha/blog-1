@@ -23,7 +23,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand">leaftha-blog</a>
+        <a class="navbar-brand" data-toggle="modal" data-target="#myModal">leaftha</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -48,7 +48,7 @@
             </ul>
             <form class="form-inline">
                 <div class="input-group">
-                    <input class="form-control mr-sm-2" type="text" id="search-input" onkeyup="wait_for_enterkey()" placeholder="Search">
+                    <input class="form-control mr-sm-2" type="text" id="search-input" onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}" placeholder="Search">
                     <span class="input-group-btn">
                         <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="button" onclick="search_post()">go!</button>
                     </span>
@@ -57,8 +57,9 @@
         </div>
     </div>
 </nav>
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
+
 <!-- Footer -->
 <footer>
     <div class="container">
@@ -97,6 +98,24 @@
 </footer>
 
 
+<!-- Modal -->
+<div class="modal fademodal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">leaftha</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p>test</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script>
     function search_post(){
     var search_value = document.getElementById('search-input').value;
@@ -106,14 +125,11 @@
 
 
     function wait_for_enterkey(){
-    if (window.event.keyCode == 13){
-        search_post();
-            }
-    }
+       if (window.event.keyCode == 13){
+           search_post();
+       }
+     }
 </script>
-
-
-
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'jquery/jquery.min.js' %}"></script>
 <script src="{% static 'javascript/bootstrap.bundle.min.js' %}"></script>
