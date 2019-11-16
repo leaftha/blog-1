@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog',
+    'basecamp',
     'markdownx',
 
     'django.contrib.admin',
