@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'blog',
     'basecamp',
     'markdownx',
+    'django.contrib.sites',
+    'disqus',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+DISQUS_WEBSITE_SHORTNAME = 'blog-rw8n3jlqwo'
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,7 +131,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 MEDIA_URL = '/media/'
-
 
 from datetime import datetime
 

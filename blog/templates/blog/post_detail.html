@@ -3,39 +3,48 @@
 
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('https://picsum.photos/1900/600')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-heading">
-          <h1>{{ object.title }}</h1>
-          <span class="meta">Posted by
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>{{ object.title }}</h1>
+                    <span class="meta">Posted by
               <a>{{ object.author }}</a> on {{ object.created }}</span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 
 <!-- Post Content -->
 <article>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        {% if p.category %}
-        <span class="badge badge-secondary post-subtitle float-right">{{ p.category }}</span>
-        {% else %}
-        <span class="badge badge-secondary post-subtitle float-right">미분류</span>
-        {% endif %}
-        <hr/>
-        {% if object.head_image %}
-        <img class="img-fluid rounded" src="{{ object.head_image.url }}" alt={{ object.title }}>
-        {% endif %}
-        {{ object.get_markdown_content | safe }}
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {% if p.category %}
+                <span class="badge badge-secondary post-subtitle float-right">{{ p.category }}</span>
+                {% else %}
+                <span class="badge badge-secondary post-subtitle float-right">미분류</span>
+                {% endif %}
+                <hr/>
+                {% if object.head_image %}
+                <img class="img-fluid rounded" src="{{ object.head_image.url }}" alt={{ object.title }}>
+                {% endif %}
+                {{ object.get_markdown_content | safe }}
+            </div>
+        </div>
+        <br/>
+        <div>
+
+            {% load disqus_tags %}
+
+            {% disqus_show_comments %}
+
+        </div>
     </div>
-  </div>
 </article>
 
-<hr>
+
+
 {% endblock %}
