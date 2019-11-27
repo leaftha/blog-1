@@ -28,7 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['207.148.101.105',
                  '127.0.0.1',
                  'egoist.website',
-                 'www.egoist.website',]
+                 'www.egoist.website',
+                 'egoistlabs.com',
+                 'www.egoistlabs.com',]
 
 
 # Application definition
