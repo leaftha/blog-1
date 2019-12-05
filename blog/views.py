@@ -16,6 +16,22 @@ class PostList(ListView):
         context = super(PostList, self).get_context_data(**kwargs)
         context['category_list'] = Category.objects.all()
         context['posts_without_category'] = Post.objects.filter(category=None).count()
+        paginator = context['paginator']
+
+
+        page_numbers_range = 5  # Display only 5 page numbers
+        max_index = len(paginator.page_range)
+
+        page = self.request.GET.get('page')
+        current_page = int(page) if page else 1
+
+        start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
+        end_index = start_index + page_numbers_range
+        if end_index >= max_index:
+            end_index = max_index
+
+        page_range = paginator.page_range[start_index:end_index]
+        context['page_range'] = page_range
 
         return context
 
@@ -61,15 +77,21 @@ class PostListByCategory(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(type(self), self).get_context_data(**kwargs)
         context['category_list'] = Category.objects.all()
-        context['posts_without_category'] = Post.objects.filter(category=None).count()
+        paginator = context['paginator']
 
-        slug = self.kwargs['slug']
 
-        if slug == '_none':
-            context['category'] = '미분류'
-        else:
-            category = Category.objects.get(slug=slug)
-            context['category'] = category
+        page_numbers_range = 5  # Display only 5 page numbers
+        max_index = len(paginator.page_range)
 
-        # context['title'] ='Blog - {}'.format(category.name)
+        page = self.request.GET.get('page')
+        current_page = int(page) if page else 1
+
+        start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
+        end_index = start_index + page_numbers_range
+        if end_index >= max_index:
+            end_index = max_index
+
+        page_range = paginator.page_range[start_index:end_index]
+        context['page_range'] = page_range
+
         return context
