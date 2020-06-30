@@ -16,9 +16,8 @@ class PostList(ListView):
         context = super(PostList, self).get_context_data(**kwargs)
         context['category_list'] = Category.objects.all()
         context['posts_without_category'] = Post.objects.filter(category=None).count()
+
         paginator = context['paginator']
-
-
         page_numbers_range = 5  # Display only 5 page numbers
         max_index = len(paginator.page_range)
 

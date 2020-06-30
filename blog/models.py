@@ -27,6 +27,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=30)  # 제목 표시 글자수 제한 30글자
+
     content = MarkdownxField()
     created = models.DateTimeField()
     head_image = models.ImageField(upload_to='blog/%Y/%m/%d/', blank=True)
